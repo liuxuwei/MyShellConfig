@@ -6,6 +6,9 @@
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
 set hls
+set showmode
+set number
+set clipboard=unnamed
 
 let mapleader=","
 " Do incremental searching.
