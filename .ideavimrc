@@ -5,17 +5,21 @@
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
 set scrolloff=5
+set nu
 set hls
 set showmode
-set number
 set clipboard=unnamed
+set relativenumber
+set incsearch
+
+""" Plugins -------
+set surround
 
 let mapleader=","
 " Do incremental searching.
-set incsearch
 
 Plug 'preservim/nerdtree'
-Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
@@ -30,20 +34,27 @@ vnoremap <leader>cp "+y<CR>
 
 "normal mode action mapping for idea actions
 "press Q to closeProject
-nnoremap re :action RenameElement<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gb :action Back<CR>
+nnoremap gt :action Forward<CR>
 nnoremap gc :action GotoClass<CR>
 nnoremap gf :action GotoFile<CR>
 nnoremap ch :action CallHierarchy<CR>
 nnoremap gs :action GotoSuperMethod<CR>
+nnoremap zen :action ToggleZenMode<CR>
 map ge <Action>(GotoNextError)
 map gE <Action>(GotoNextError)
 nnoremap J :tabp<CR>
 nnoremap K :tabn<CR>
+nnoremap > >>
+nnoremap < <<
+nnoremap H ^
+nnoremap L $
 
 "default leader is \
+nnoremap <leader>re :action RenameElement<CR>
 nnoremap <leader>u :action FindUsages<CR>
+nnoremap <leader>n :action Annotate<CR>
 nnoremap <leader>apk :action Android.BuildApk<CR>
 nnoremap <leader>cle :action CleanGradleProject<CR>
 nnoremap <leader>ync :action Android.SyncProject<CR>
@@ -53,11 +64,10 @@ nnoremap <leader>ff :action FindInPath<CR>
 nnoremap <leader>x :action Exit<CR>
 nnoremap <leader>im :action ImplementMethods<CR>
 nnoremap <leader>te :action ActivateTerminalToolWindow<CR>
-nnoremap <leader>rs :action RestartIde<CR>
-nnoremap <leader>run :action Run<CR>
+nnoremap <leader>z :action Run<CR>
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 
 
-" Find more examples here: https://jb.gg/share-ideavimrc
+" Find more examples here: https://jb.gg/share-ideavimr
